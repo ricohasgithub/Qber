@@ -1,14 +1,15 @@
 package qsor;
 
-public class Vector extends Qsor {
+public class Vector extends Tensor {
 
-	@Override
-	public Qsor dot(Qsor that) {
-		// TODO Auto-generated method stub
+	public Vector () {
+		
+	}
+	
+	public Tensor dot(Tensor that) {
 		return null;
 	}
 
-	@Override
 	public void norm() {
 		// TODO Auto-generated method stub
 		

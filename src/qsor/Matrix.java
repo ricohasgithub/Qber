@@ -1,14 +1,12 @@
 package qsor;
 
-public class Matrix extends Qsor {
+public class Matrix extends Tensor {
 
-	@Override
-	public Qsor dot(Qsor that) {
+	public Tensor dot(Tensor that) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void norm() {
 		// TODO Auto-generated method stub
 		
