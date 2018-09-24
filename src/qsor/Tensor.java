@@ -1,6 +1,6 @@
 package qsor;
 
-public class Scalar extends Qsor {
+public class Tensor extends Qsor {
 
 	@Override
 	public Qsor dot(Qsor that) {
@@ -13,7 +13,5 @@ public class Scalar extends Qsor {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+
 }
