@@ -7,4 +7,9 @@ public class ActivationFunction {
 		return 1 / (1 + (Math.pow(Math.E, -z)));
 	}
 	
+	public static double relu (double z) {
+		// ReLU Activation Function
+		return Math.max(0, z);
+	}
+	
 }
