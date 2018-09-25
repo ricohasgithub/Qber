@@ -42,17 +42,17 @@ public class Dense {
 		
 		switch (activationFunction){
 			case "relu":
-				ActivationFunction.relu(z);
+				a = ActivationFunction.relu(z);
 			case "sigmoid":
-				ActivationFunction.sigmoid(z);
+				a = ActivationFunction.sigmoid(z);
 			case "tanh":
-				ActivationFunction.tanh(z);
+				a = ActivationFunction.tanh(z);
 			case "softmax":
-				ActivationFunction.softmax(input, z);
+				a = ActivationFunction.softmax(input, z);
 		}
 		
-		a = 
-		
+		a += bias;
+			
 	}
 	
 	public double getZ () {
