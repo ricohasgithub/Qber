@@ -12,7 +12,22 @@ public class Vector extends Tensor {
 		// Iterate through
 		return null;
 	}
-
+	
+	public double[] getVector () {
+		
+		double[] temp = new double[values.length];
+		
+		for (int i=0; i<values.length; i++) {
+			temp[i] = values[i];
+		}
+		
+		return temp;
+	}
+	
+	public int size () {
+		return values.length;
+	}
+	
 	public void norm() {
 		
 		double min = getMinFromVal();
