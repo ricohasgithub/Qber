@@ -8,8 +8,8 @@ public class Vector extends Tensor {
 		this.values = values;
 	}
 	
-	public Tensor dot(Tensor that) {
-		return null;
+	public double dot(Tensor that) {
+		return -1;
 	}
 	
 	public double[] getValue () {

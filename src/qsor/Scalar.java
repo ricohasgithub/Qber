@@ -4,9 +4,13 @@ public class Scalar extends Tensor {
 
 	double value;
 	
-	public Tensor dot(Tensor that) {
+	public Scalar (double value) {
+		this.value = value;
+	}
+	
+	public double dot(Tensor that) {
 		// TODO Auto-generated method stub
-		return null;
+		return -1;
 	}
 
 	public void norm() {

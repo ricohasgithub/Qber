@@ -3,9 +3,9 @@ package qsor;
 public class Tensor {
 
 
-	public Tensor dot (Tensor that) {
+	public double dot (Tensor that) {
 		// TODO Auto-generated method stub
-		return null;
+		return -1;
 	}
 
 	public void norm () {
