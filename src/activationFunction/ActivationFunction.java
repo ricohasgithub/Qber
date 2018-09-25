@@ -16,7 +16,7 @@ public class ActivationFunction {
 	
 	public static double softmax (Vector v, double z) {
 		// Softmax Activation Function (used for output)
-		double[] vals = v.getVector();
+		double[] vals = v.getValue();
 		
 		double sum = 0;
 		for (int i=0; i<v.size(); i++) {

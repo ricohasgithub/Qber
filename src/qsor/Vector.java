@@ -9,11 +9,10 @@ public class Vector extends Tensor {
 	}
 	
 	public Tensor dot(Tensor that) {
-		// Iterate through
 		return null;
 	}
 	
-	public double[] getVector () {
+	public double[] getValue () {
 		
 		double[] temp = new double[values.length];
 		
