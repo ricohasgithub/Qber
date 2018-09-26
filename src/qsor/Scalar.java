@@ -18,6 +18,4 @@ public class Scalar extends Tensor {
 		
 	}
 	
-	
-	
 }

@@ -4,6 +4,10 @@ public class Vector extends Tensor {
 
 	private static double[] values;
 	
+	public Vector (int size) {
+		values = new double[size];
+	}
+	
 	public Vector (double[] values) {
 		this.values = values;
 	}
