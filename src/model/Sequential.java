@@ -1,28 +1,24 @@
 package model;
 
+import java.util.ArrayList;
+
 import layer.Dense;
+import layer.Layer;
 
 public class Sequential {
-
-	public static class LayerCollection {
+	
+	ArrayList<Layer> layers;
+	
+	public Sequential () {
+		layers = new ArrayList<Layer>();
+	}
+	
+	public void add (Layer layer) {
 		
-		LayerCollection previous;
-		LayerCollection next;
-		
-		Dense layer;
-		
-		public LayerCollection (Dense layer) {
-			// Default Constructor
-			this.layer = layer;
-			
-			previous = null;
-			next = null;
-		}
-		
-		public boolean isEmpty () {
-			return layer == null;
-		}
-		
+	}
+	
+	public boolean isEmpty () {
+		return layers.isEmpty();
 	}
 	
 }

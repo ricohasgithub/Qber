@@ -2,7 +2,7 @@ package layer;
 
 import qsor.Vector;
 
-public class Dense {
+public class Dense extends Layer {
 	
 	private double[] previous;
 	private Neuron[] neurons;
