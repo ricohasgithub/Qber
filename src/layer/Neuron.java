@@ -5,15 +5,15 @@ import qsor.Vector;
 
 public class Neuron {
 
-	Vector input;
+	private static Vector input;
 	
-	private double bias;
-	private double[] inputs;
-	private double[] weights;
-	private String activationFunction;
+	private static double bias;
+	private static double[] inputs;
+	private static double[] weights;
+	private static String activationFunction;
 	
-	private double z;
-	private double a;
+	private static double z;
+	private static double a;
 	
 	public Neuron (Vector v, String activationFunction) {
 		// Initializes all of the instance variables and initializes the weights and bias to random valus between 0 and 1
@@ -39,9 +39,19 @@ public class Neuron {
 		inputs = v.getValue();
 	}
 	
-	public void propagate () {
+	public static void propagate () {
 		// Applies the activation function to the current neuron (used in propagation)
-		z = input.dot(new Vector(weights));
+		
+		for (int i=0; i<inputs.length; i++) {
+			/* Dot Product:
+					x = input
+					w = weight
+					z = (x * w) + b
+			*/
+			z += inputs[i] * weights[i];
+		}
+		
+		z += bias;
 		
 		switch (activationFunction){
 			case "relu":
@@ -58,11 +68,10 @@ public class Neuron {
 			
 	}
 	
-	public double getZ () {
-		return z;
-	}
-	
 	public double getA () {
+		if (a == 0) {
+			propagate();
+		}
 		return a;
 	}
 	

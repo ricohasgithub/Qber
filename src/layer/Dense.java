@@ -29,4 +29,15 @@ public class Dense {
 		}
 	}
 	
+	public double[] getAVal () {
+		
+		double[] a = new double[neurons.length];
+		
+		for (int i=0; i<a.length; i++) {
+			a[i] = neurons[i].getA();
+		}
+		
+		return a;
+	}
+	
 }

@@ -2,20 +2,21 @@ package model;
 
 import java.util.ArrayList;
 
+import layer.Dense;
 import layer.Layer;
 
 import qsor.Vector;
 
 public class Sequential {
 	
-	ArrayList<Layer> layers;
+	ArrayList<Dense> layers;
 	String layerType;
 	
 	public Sequential () {
-		layers = new ArrayList<Layer>();
+		layers = new ArrayList<Dense>();
 	}
 	
-	public void add (Layer layer, String type) {
+	public void add (Dense layer, String type) {
 		layers.add(layer);
 		layerType = type;
 	}
@@ -24,16 +25,12 @@ public class Sequential {
 		return layers.isEmpty();
 	}
 	
-	public void train (Vector input, int epochs) {
+	public void train (Vector input) {
 		
 		double[] inputVal = input.getValue();
+		double[] prevAVal;
 		
-		for (int e=0; e<epochs; e++) {
-			Layer curr = layers.get(e);
-			
-			if (type.equals("Dense")) {
-				
-			}
+		for (Dense d : layers) {
 			
 		}
 		
