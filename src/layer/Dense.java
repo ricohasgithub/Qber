@@ -23,8 +23,10 @@ public class Dense {
 	public Dense (int size, String activationFunction) {
 		// Hidden / Output Layer
 		neurons = new Neuron[size];
+		
+		for (int i=0; i<neurons.length; i++) {
+			neurons[i] = new Neuron(activationFunction);
+		}
 	}
-	
-	public void 
 	
 }

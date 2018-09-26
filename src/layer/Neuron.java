@@ -39,8 +39,8 @@ public class Neuron {
 		inputs = v.getValue();
 	}
 	
-	public void apply () {
-		// Applies the activation function to the 
+	public void propagate () {
+		// Applies the activation function to the current neuron (used in propagation)
 		z = input.dot(new Vector(weights));
 		
 		switch (activationFunction){
