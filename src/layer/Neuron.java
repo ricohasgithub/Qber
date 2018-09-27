@@ -7,7 +7,6 @@ public class Neuron {
 
 	private Vector input;
 	
-	private double bias;
 	private double[] inputs;
 	private double[] weights;
 	private String activationFunction;
@@ -21,7 +20,6 @@ public class Neuron {
 		inputs = v.getValue();
 		
 		initRanWeights();
-		initRanBias();
 		
 		this.activationFunction = activationFunction;
 	}
@@ -29,7 +27,6 @@ public class Neuron {
 	public Neuron (String activationFunction) {
 		
 		initRanWeights();
-		initRanBias();
 		
 		this.activationFunction = activationFunction;
 	}
@@ -44,7 +41,7 @@ public class Neuron {
 		inputs = v.getValue();
 	}
 	
-	public void propagate () {
+	public void propagate (double bias) {
 		// Applies the activation function to the current neuron (used in propagation)
 		
 		for (int i=0; i<inputs.length; i++) {
@@ -93,10 +90,6 @@ public class Neuron {
 		for (int i=0; i<weights.length; i++) {
 			weights[i] = Math.random();
 		}
-	}
-
-	private void initRanBias() {
-		bias = Math.random();
 	}
 	
 }

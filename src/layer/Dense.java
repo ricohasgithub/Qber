@@ -4,6 +4,8 @@ import qsor.Vector;
 
 public class Dense {
 	
+	private double bias;
+	
 	private double[] previous;
 	private Neuron[] neurons;
 	
@@ -18,6 +20,8 @@ public class Dense {
 		for (int i=0; i<neurons.length; i++) {
 			neurons[i] = new Neuron(new Vector(inputShape), activationFunction);
 		}
+		
+		initRanBias();
 	}
 	
 	public Dense (int size, String activationFunction) {
@@ -27,6 +31,8 @@ public class Dense {
 		for (int i=0; i<neurons.length; i++) {
 			neurons[i] = new Neuron(activationFunction);
 		}
+		
+		initRanBias();
 	}
 	
 	public double[] getAArray () {
@@ -47,11 +53,15 @@ public class Dense {
 		for (int i=0; i<neurons.length; i++) {
 			Neuron curr = neurons[i];
 			curr.add(v);
-			curr.propagate();
+			curr.propagate(bias);
 			a[i] = curr.getA();
 		}
 		
 		return a;
+	}
+	
+	private void initRanBias() {
+		bias = Math.random();
 	}
 	
 }
