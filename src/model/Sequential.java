@@ -31,6 +31,7 @@ public class Sequential {
 		double[] prevAVal;
 		
 		for (Dense d : layers) {
+			prevAVal = d.getAArray();
 			
 		}
 		

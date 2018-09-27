@@ -29,7 +29,7 @@ public class Dense {
 		}
 	}
 	
-	public double[] getAVal () {
+	public double[] getAArray () {
 		
 		double[] a = new double[neurons.length];
 		
