@@ -5,15 +5,15 @@ import qsor.Vector;
 
 public class Neuron {
 
-	private static Vector input;
+	private Vector input;
 	
-	private static double bias;
-	private static double[] inputs;
-	private static double[] weights;
-	private static String activationFunction;
+	private double bias;
+	private double[] inputs;
+	private double[] weights;
+	private String activationFunction;
 	
-	private static double z;
-	private static double a;
+	private double z;
+	private double a;
 	
 	public Neuron (Vector v, String activationFunction) {
 		// Initializes all of the instance variables and initializes the weights and bias to random valus between 0 and 1
@@ -35,6 +35,11 @@ public class Neuron {
 	}
 	
 	public void add (Vector v) {
+		
+		if (v == null) {
+			throw new IllegalArgumentException("Input vector cannot be null");
+		}
+		
 		input = v;
 		inputs = v.getValue();
 	}
@@ -69,10 +74,19 @@ public class Neuron {
 	}
 	
 	public double getA () {
-		if (a == 0) {
-			propagate();
-		}
 		return a;
+	}
+	
+	public void setWeights (double[] input) {
+		
+		if (input.length != weights.length) {
+			throw new IllegalArgumentException("Input size doesn't match the size of the current layer");
+		}
+		
+		for (int i=0; i<weights.length; i++) {
+			weights[i] = input[i];
+		}
+		
 	}
 	
 	private void initRanWeights () {
