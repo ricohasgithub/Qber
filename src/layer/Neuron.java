@@ -39,7 +39,7 @@ public class Neuron {
 		inputs = v.getValue();
 	}
 	
-	public static void propagate () {
+	public void propagate () {
 		// Applies the activation function to the current neuron (used in propagation)
 		
 		for (int i=0; i<inputs.length; i++) {

@@ -28,10 +28,11 @@ public class Sequential {
 	public void train (Vector input) {
 		
 		double[] inputVal = input.getValue();
-		double[] prevAVal;
 		
+		double output = 0;
+		
+		// Forward Propagation
 		for (Dense d : layers) {
-			prevAVal = d.getAArray();
 			
 		}
 		

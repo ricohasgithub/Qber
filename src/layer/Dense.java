@@ -40,4 +40,19 @@ public class Dense {
 		return a;
 	}
 	
+	public double[] feedAndGetA (Vector v) {
+	
+		double[] input = v.getValue();
+		double[] a = new double[neurons.length];
+		
+		for (int i=0; i<neurons.length; i++) {
+			Neuron curr = neurons[i];
+			curr.add(v);
+			curr.propagate();
+			a[i] = curr.getA();
+		}
+		
+		return a;
+	}
+	
 }
