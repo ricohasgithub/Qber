@@ -52,7 +52,7 @@ public class Dense {
 		
 		for (int i=0; i<neurons.length; i++) {
 			Neuron curr = neurons[i];
-			curr.add(v);
+			curr.addVector(v);
 			curr.propagate(bias);
 			a[i] = curr.getA();
 		}

@@ -24,22 +24,26 @@ public class Neuron {
 		input = v;
 		inputs = v.getValue();
 		
+		weights = new double[input.size()];
+		
 		initRanWeights();
 		
 		this.activationFunction = activationFunction;
 	}
 	
 	public Neuron (String activationFunction) {
-		
-		// initRanWeights();
-		
 		this.activationFunction = activationFunction;
 	}
 	
-	public void add (Vector v) {
+	public void addVector (Vector v) {
 		
 		if (v == null) {
 			throw new IllegalArgumentException("Input vector cannot be null");
+		}
+		
+		if (inputs.length == 0) {
+			weights = new double[v.size()];
+			initRanWeights();
 		}
 		
 		input = v;
@@ -96,8 +100,6 @@ public class Neuron {
 	}
 	
 	private void initRanWeights () {
-		
-		weights = new double[input.size()];
 		
 		for (int i=0; i<weights.length; i++) {
 			weights[i] = Math.random();
