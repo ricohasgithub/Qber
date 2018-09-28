@@ -16,6 +16,11 @@ public class Neuron {
 	
 	public Neuron (Vector v, String activationFunction) {
 		// Initializes all of the instance variables and initializes the weights and bias to random valus between 0 and 1
+		
+		if (activationFunction.isEmpty()) {
+			throw new IllegalArgumentException("Activation Function must not be empty");
+		}
+		
 		input = v;
 		inputs = v.getValue();
 		
