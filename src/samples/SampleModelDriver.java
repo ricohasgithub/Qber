@@ -18,7 +18,12 @@ public class SampleModelDriver {
 		// Output layer size: 1 Activation Function: softmax
 		Dense output = new Dense(1, "softmax");
 		
-		
+		// Add the layers to the Sequential model (in order)
+		model.add(input);
+		model.add(hidden1);
+		model.add(hidden2);
+		model.add(output);
+			
 	}
 
 }
