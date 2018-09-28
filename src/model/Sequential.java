@@ -39,7 +39,15 @@ public class Sequential {
 		
 		initPropLayers();
 		
+		// Initial Layer
 		double[] prevA = propLayers[0].feedAndGetA(input);
+		
+		for (int i=0; i<propLayers.length; i++) {
+			
+		}
+		
+		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());
+		System.out.println(output);
 		
 	}
 	

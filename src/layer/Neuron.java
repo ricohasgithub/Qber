@@ -31,7 +31,7 @@ public class Neuron {
 	
 	public Neuron (String activationFunction) {
 		
-		initRanWeights();
+		// initRanWeights();
 		
 		this.activationFunction = activationFunction;
 	}
@@ -92,13 +92,17 @@ public class Neuron {
 	}
 	
 	public void adjustWeights (Vector changes) {
-		
+		/* TODO */
 	}
 	
 	private void initRanWeights () {
+		
+		weights = new double[input.size()];
+		
 		for (int i=0; i<weights.length; i++) {
 			weights[i] = Math.random();
 		}
+		
 	}
 	
 }

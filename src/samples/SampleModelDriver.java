@@ -7,6 +7,7 @@ import layer.*;
 public class SampleModelDriver {
 
 	public static void main(String[] args) {
+		
 		Sequential model = new Sequential();
 		
 		// Input layer size: 5 Activation Function: Sigmoid  Input Shape / Vector size: 5

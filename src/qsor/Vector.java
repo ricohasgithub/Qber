@@ -35,6 +35,23 @@ public class Vector extends Tensor {
 		return values.length == 0;
 	}
 	
+	public String toString () {
+		
+		if (values.length == 0) {
+			return "Empty";
+		}
+		
+		String s = "";
+		
+		for (int i=0; i<values.length-1; i++) {
+			s += values[i] + ", ";
+		}
+		
+		s += values[values.length-1];
+		
+		return "[" + s + "]";
+	}
+	
 	public void norm() {
 		
 		double min = getMinFromVal();
