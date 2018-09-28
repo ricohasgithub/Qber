@@ -10,6 +10,8 @@ import qsor.Vector;
 public class Sequential {
 	
 	ArrayList<Dense> layers;
+	Dense[] propLayers;
+	
 	String layerType;
 	
 	public Sequential () {
@@ -31,17 +33,17 @@ public class Sequential {
 	
 	public void train (Vector input) {
 		
-		// double[] inputVal = input.getValue();
-		double[] prevA = new double[input.size()];
-		
-		double output = 0;
-		
-		// Forward Propagation
-		for (Dense d : layers) {
-			prevA = d.feedAndGetA(input);
-			
-		}
+		initPropLayers();
 		
 	}
 	
+	private void initPropLayers() {
+		// Initialize the Dense Layer array where propagation will happen
+		propLayers = new Dense[layers.size()];
+		
+		for (int i=0; i<layers.size(); i++) {
+			propLayers[i] = layers.get(i);
+		}
+		
+	}
 }
