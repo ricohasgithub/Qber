@@ -64,4 +64,17 @@ public class Dense {
 		bias = Math.random();
 	}
 	
+	// The following methods are only used in testing (now hidden)
+	
+	public void testSetNeurons (double[][] weights) {
+		for (int r=0; r<neurons.length; r++) {
+			double[] weightsForCurrNeuron = weights[r];
+			neurons[r].setWeights(weightsForCurrNeuron);
+		}
+	}
+	
+	public void testSetBias (double inputBias) {
+		bias = inputBias;
+	}
+	
 }

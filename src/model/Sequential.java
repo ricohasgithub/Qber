@@ -12,8 +12,6 @@ public class Sequential {
 	ArrayList<Dense> layers;
 	Dense[] propLayers;
 	
-	String layerType;
-	
 	public Sequential () {
 		layers = new ArrayList<Dense>();
 	}
@@ -24,7 +22,6 @@ public class Sequential {
 	
 	public void add (Dense layer, String type) {
 		layers.add(layer);
-		layerType = type;
 	}
 	
 	public boolean isEmpty () {
@@ -41,9 +38,12 @@ public class Sequential {
 		
 		// Initial Layer
 		double[] prevA = propLayers[0].feedAndGetA(input);
+
+		System.out.println();
 		
-		for (int i=0; i<propLayers.length; i++) {
-			
+		for (int i=1; i<propLayers.length; i++) {
+			// Repeatedly feed forward a new Vector created from the a values of the previous layer
+			prevA = propLayers[i].feedAndGetA(new Vector(prevA));
 		}
 		
 		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());

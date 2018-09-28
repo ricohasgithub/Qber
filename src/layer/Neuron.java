@@ -67,15 +67,17 @@ public class Neuron {
 		switch (activationFunction){
 			case "relu":
 				a = ActivationFunction.relu(z);
+				break;
 			case "sigmoid":
 				a = ActivationFunction.sigmoid(z);
+				break;
 			case "tanh":
 				a = ActivationFunction.tanh(z);
+				break;
 			case "softmax":
 				a = ActivationFunction.softmax(input, z);
+				break;
 		}
-		
-		a += bias;
 			
 	}
 	
@@ -84,6 +86,8 @@ public class Neuron {
 	}
 	
 	public void setWeights (double[] input) {
+		
+		weights = new double[input.length];
 		
 		if (input.length != weights.length) {
 			throw new IllegalArgumentException("Input size doesn't match the size of the current layer");
