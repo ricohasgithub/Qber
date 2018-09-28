@@ -31,6 +31,10 @@ public class Vector extends Tensor {
 		return values.length;
 	}
 	
+	public boolean isEmpty () {
+		return values.length == 0;
+	}
+	
 	public void norm() {
 		
 		double min = getMinFromVal();

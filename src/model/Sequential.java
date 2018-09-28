@@ -33,7 +33,13 @@ public class Sequential {
 	
 	public void train (Vector input) {
 		
+		if (input.isEmpty()) {
+			throw new IllegalArgumentException("Input vector cannot be empty");
+		}
+		
 		initPropLayers();
+		
+		double[] prevA = propLayers[0].feedAndGetA(input);
 		
 	}
 	
