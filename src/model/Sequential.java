@@ -16,6 +16,10 @@ public class Sequential {
 		layers = new ArrayList<Dense>();
 	}
 	
+	public void add (Dense layer) {
+		layers.add(layer);
+	}
+	
 	public void add (Dense layer, String type) {
 		layers.add(layer);
 		layerType = type;
