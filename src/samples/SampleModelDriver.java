@@ -44,11 +44,11 @@ public class SampleModelDriver {
 		double[] inputArray = {0.25, 0.05};
 		Vector inputV = new Vector(inputArray);
 		
-		input.testSetNeurons(weights1);
-		output.testSetNeurons(weights2);
-		
-		input.testSetBias(bias1);
-		output.testSetBias(bias2);
+//		input.testSetNeurons(weights1);
+//		output.testSetNeurons(weights2);
+//		
+//		input.testSetBias(bias1);
+//		output.testSetBias(bias2);
 		
 		model.add(input);
 		model.add(output);
