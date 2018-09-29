@@ -51,6 +51,10 @@ public class Sequential {
 		
 	}
 	
+	public void getError () {
+		
+	}
+	
 	private void initPropLayers() {
 		// Initialize the Dense Layer array where propagation will happen
 		propLayers = new Dense[layers.size()];

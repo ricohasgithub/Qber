@@ -1,6 +1,6 @@
 package layer;
 
-import activationFunction.ActivationFunction;
+import functions.*;
 import qsor.Vector;
 
 public class Neuron {

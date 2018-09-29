@@ -1,4 +1,4 @@
-package activationFunction;
+package functions;
 
 import qsor.Vector;
 

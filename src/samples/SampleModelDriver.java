@@ -2,8 +2,8 @@ package samples;
 
 import qsor.*;
 import model.*;
+import functions.*;
 import layer.*;
-import activationFunction.*;
 
 public class SampleModelDriver {
 
