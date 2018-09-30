@@ -53,7 +53,7 @@ public class SampleModelDriver {
 		model.add(input);
 		model.add(output);
 		
-		model.train(inputV);
+//		model.train(inputV);
 	}
 
 }
