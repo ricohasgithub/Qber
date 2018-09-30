@@ -14,8 +14,17 @@ public class Sequential {
 	ArrayList<Dense> layers;
 	Dense[] propLayers;
 	
+	String optimizer;
+	String costFunction;
+	
+	double error;
+	
+	double[] predictions;
+	double[] truth;
+	
 	public Sequential () {
 		layers = new ArrayList<Dense>();
+		error = 0;
 	}
 	
 	public void add (Dense layer) {
@@ -30,8 +39,9 @@ public class Sequential {
 		return layers.isEmpty();
 	}
 	
-	public void compile () {
-		
+	public void compile (String opt, String costF) {
+		optimizer = opt;
+		costFunction = costF;
 	}
 	
 	public void fit () {
@@ -57,12 +67,14 @@ public class Sequential {
 		}
 		
 		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());
+		predictions = output.getValue();
+		
 		System.out.println(output);
 		
 	}
 	
-	public void getError () {
-		
+	private double getError (Vector pred, Vector truth) {
+		return CostFunction.MSE(pred, truth);
 	}
 	
 	private void initPropLayers() {
