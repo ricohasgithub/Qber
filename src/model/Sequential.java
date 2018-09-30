@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import layer.Dense;
 import layer.Layer;
 
+import functions.CostFunction;
+
 import qsor.Vector;
 
 public class Sequential {
@@ -26,6 +28,14 @@ public class Sequential {
 	
 	public boolean isEmpty () {
 		return layers.isEmpty();
+	}
+	
+	public void compile () {
+		
+	}
+	
+	public void fit () {
+		
 	}
 	
 	public void train (Vector input) {
