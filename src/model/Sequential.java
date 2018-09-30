@@ -24,7 +24,6 @@ public class Sequential {
 	
 	public Sequential () {
 		layers = new ArrayList<Dense>();
-		error = 0;
 	}
 	
 	public void add (Dense layer) {
@@ -42,10 +41,6 @@ public class Sequential {
 	public void compile (String opt, String costF) {
 		optimizer = opt;
 		costFunction = costF;
-	}
-	
-	public void fit () {
-		
 	}
 	
 	public void train (Vector input) {
@@ -73,8 +68,13 @@ public class Sequential {
 		
 	}
 	
-	private double getError (Vector pred, Vector truth) {
-		return CostFunction.MSE(pred, truth);
+	private void updateCurrError () {
+		
+		if (predictions.length == 0 || truth.length == 0) {
+			throw new IllegalArgumentException("Model has not been trained yet");
+		}
+		
+		error = CostFunction.MSE(new Vector(predictions), new Vector(truth));
 	}
 	
 	private void initPropLayers() {
