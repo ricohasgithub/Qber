@@ -74,7 +74,16 @@ public class Sequential {
 
 		System.out.println(output);
 	}
-
+	
+	private void backProp () {
+		
+		if (propLayers.length == 0) {
+			// Forward Propagation hasn't been called yet
+			throw new IllegalArgumentException("Must call forward propagation first");
+		}
+		
+	}
+	
 	private void updateCurrError () {
 
 		if (predictions.length == 0 || truth.length == 0) {
