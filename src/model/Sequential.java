@@ -53,6 +53,8 @@ public class Sequential {
 		
 		updateCurrError();
 
+		backProp(100);
+		
 	}
 
 	private void forwardProp (Vector input) {
@@ -75,11 +77,15 @@ public class Sequential {
 		System.out.println(output);
 	}
 	
-	private void backProp () {
+	private void backProp (int epochs) {
 		
 		if (propLayers.length == 0) {
 			// Forward Propagation hasn't been called yet
 			throw new IllegalArgumentException("Must call forward propagation first");
+		}
+		
+		for (int i=0; i<epochs; i++) {
+			
 		}
 		
 	}
