@@ -64,7 +64,7 @@ public class Neuron {
 		
 		z += bias;
 		
-		switch (activationFunction){
+		switch (activationFunction) {
 			case "relu":
 				a = ActivationFunction.relu(z);
 				break;

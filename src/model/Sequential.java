@@ -43,7 +43,7 @@ public class Sequential {
 		costFunction = costF;
 	}
 
-	public void train (Vector input, Vector truth) {
+	public void train (Vector input, Vector truth, String costFunctions) {
 
 		if (input.isEmpty() || truth.isEmpty()) {
 			throw new IllegalArgumentException("Input vector cannot be empty");
@@ -51,7 +51,7 @@ public class Sequential {
 
 		forwardProp(input);
 		
-		updateCurrError();
+		updateCurrError(costFunction);
 
 		backProp(100);
 		
@@ -90,13 +90,20 @@ public class Sequential {
 		
 	}
 	
-	private void updateCurrError () {
-
+	private void updateCurrError (String costFunction) {
+		
 		if (predictions.length == 0 || truth.length == 0) {
 			throw new IllegalArgumentException("Model has not been trained yet");
 		}
-
-		error = CostFunction.MSE(new Vector(predictions), new Vector(truth));
+		
+		switch (costFunction) {
+			case ("MSE"):
+				error = CostFunction.MSE(new Vector(predictions), new Vector(truth));
+				break;
+			case ("Cross Entrophy"):
+				break;
+		}
+		
 	}
 
 	private void initPropLayers() {
