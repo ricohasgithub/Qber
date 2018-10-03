@@ -18,12 +18,18 @@ public class Sequential {
 	String costFunction;
 
 	double error;
+	double learningRate;
 
 	double[] predictions;
 	double[] truth;
 
 	public Sequential () {
 		layers = new ArrayList<Dense>();
+	}
+	
+	public Sequential (double learningRate) {
+		layers = new ArrayList<Dense>();
+		this.learningRate = learningRate;
 	}
 
 	public void add (Dense layer) {
