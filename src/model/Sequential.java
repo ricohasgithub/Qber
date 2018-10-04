@@ -43,7 +43,7 @@ public class Sequential {
 	public boolean isEmpty () {
 		return layers.isEmpty();
 	}
-
+	
 	public void compile (String opt, String costF) {
 		optimizer = opt;
 		costFunction = costF;
@@ -57,28 +57,32 @@ public class Sequential {
 
 		this.learningRate = learningRate;
 		this.costFunction = costFunction;
+		this.truth = truth.getValue();
 		
 		forwardProp(input);
 		
 		updateCurrError(costFunction);
+		System.out.println(error);
 
-		backProp(100);
+		backProp(input, 10);
 		
 	}
 	
-	public void train (Vector input, Vector truth, String costFunctions, int epochs, double learningRate) {
+	public void train (Vector input, Vector truth, String costFunction, int epochs, double learningRate) {
 
 		if (input.isEmpty() || truth.isEmpty()) {
 			throw new IllegalArgumentException("Input vector cannot be empty");
 		}
 
 		this.learningRate = learningRate;
+		this.costFunction = costFunction;
+		this.truth = truth.getValue();
 		
 		forwardProp(input);
 		
 		updateCurrError(costFunction);
 
-		backProp(epochs);
+		backProp(input, epochs);
 		
 	}
 
@@ -88,8 +92,6 @@ public class Sequential {
 
 		// Initial Layer
 		double[] prevA = propLayers[0].feedAndGetA(input);
-
-		System.out.println();
 
 		for (int i=1; i<propLayers.length; i++) {
 			// Repeatedly feed forward a new Vector created from the a values of the previous layer
@@ -102,7 +104,7 @@ public class Sequential {
 		System.out.println(output);
 	}
 	
-	private void backProp (int epochs) {
+	private void backProp (Vector input, int epochs) {
 		
 		if (propLayers.length == 0) {
 			// Forward Propagation hasn't been called yet
@@ -124,13 +126,11 @@ public class Sequential {
 				// Output of the current layer
 				double[] currLOutput = currL.getAArray();
 				
-				// For each of the current layer's output, adjust its corresponding weights
-				for (int j=0; j<currLOutput.length; j++) {
-					// Update every output / neuron of the previous layer with respect to the current neuron's value
-					lastL.updateWeights(learningRate, error, currLOutput[j]);
-				}
+				currL.updateWeights(lastL.getAArray(), learningRate, error);
 				
 			}
+			
+			forwardProp(input);
 			
 			updateCurrError(costFunction);
 			
@@ -148,9 +148,13 @@ public class Sequential {
 		
 		switch (costFunction) {
 			case ("MSE"):
-				error = CostFunction.MSE(new Vector(predictions), new Vector(truth));
+				error = CostFunction.MSE(predictions, truth);
 				break;
 			case ("Cross Entrophy"):
+				break;
+			case ("diff"):
+				// Assumes that the predictions and truth are both only one value
+				error = CostFunction.diff(predictions[0], truth[0]);
 				break;
 		}
 		

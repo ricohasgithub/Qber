@@ -32,28 +32,31 @@ public class SampleModelDriver {
 		Dense output = new Dense(2, "sigmoid");
 		
 		// w1, w2; w3, w4
-		double[][] weights1 = {{0.15, 0.45},
-							  {0.25, 0.55}};
-		
-		double[][] weights2 = {{0.50, 0.60},
-				  			  {0.40, 0.35}};
-		
-		double bias1 = 0.45;
-		double bias2 = 0.25;
-		
-		double[] inputArray = {0.25, 0.05};
-		Vector inputV = new Vector(inputArray);
-		
+//		double[][] weights1 = {{0.15, 0.45},
+//							  {0.25, 0.55}};
+//		
+//		double[][] weights2 = {{0.50, 0.60},
+//				  			  {0.40, 0.35}};
+//		
+//		double bias1 = 0.45;
+//		double bias2 = 0.25;
+//		
+//		double[] inputArray = {0.25, 0.05};
+//		Vector inputV = new Vector(inputArray);
+//		
+//		double[] truthArray = {0.15, 0.85};
+//		Vector truthV = new Vector(truthArray);
+//		
 //		input.testSetNeurons(weights1);
 //		output.testSetNeurons(weights2);
 //		
 //		input.testSetBias(bias1);
 //		output.testSetBias(bias2);
-		
-		model.add(input);
-		model.add(output);
-		
-//		model.train(inputV);
+//		
+//		model.add(input);
+//		model.add(output);
+//		
+//		model.train(inputV, truthV, "MSE", 0.1);
 	}
 
 }

@@ -41,10 +41,13 @@ public class Neuron {
 			throw new IllegalArgumentException("Input vector cannot be null");
 		}
 		
-		if (inputs.length == 0) {
-			weights = new double[v.size()];
-			initRanWeights();
-		}
+//		if (inputs.length == 0) {
+//			weights = new double[v.size()];
+//			initRanWeights();
+//		}
+		
+		weights = new double[v.size()];
+		initRanWeights();
 		
 		input = v;
 		inputs = v.getValue();

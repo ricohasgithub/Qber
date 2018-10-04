@@ -4,29 +4,33 @@ import qsor.Vector;
 
 public class CostFunction {
 	
-	public static double MSE (Vector p, Vector t) {
+	public static double MSE (double[] p, double[] t) {
 		// Mean Squared Error cost function
 		
-		if (p.size() != t.size()) {
+		if (p.length != t.length) {
 			throw new IllegalArgumentException("The predictions and truth vectors must be the same size " 
-												+ p.size() + " != " + t.size());
+												+ p.length + " != " + t.length);
 		}
 		
-		double[] predictions = p.getValue();
-		double[] truth = t.getValue();
+		double[] predictions = p;
+		double[] truth = t;
 		
-		if (p.size() == 1 && t.size() == 1) {
+		if (p.length == 1 && t.length == 1) {
 			return truth[0] - predictions[0];
 		}
 		
-		int m = t.size();
+		int m = t.length;
 		double error = 0;
 		
 		for (int i=0; i<m; i++) {
-			error += Math.sqrt(truth[i] - predictions[i]);
+			error += Math.pow(truth[i] - predictions[i], 2);
 		}
 		
 		return error/m;
+	}
+	
+	public static double diff (double p, double t) {
+		return t - p;
 	}
 	
 }
