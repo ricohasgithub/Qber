@@ -6,7 +6,6 @@ public class Dense {
 	
 	private double bias;
 	
-	private double[] previous;
 	private Neuron[] neurons;
 	
 	public Dense (int size, String activationFunction, int inputShape) {
@@ -35,6 +34,10 @@ public class Dense {
 		initRanBias();
 	}
 	
+	public int getSize () {
+		return neurons.length;
+	}
+	
 	public double[] getAArray () {
 		
 		double[] a = new double[neurons.length];
@@ -58,6 +61,26 @@ public class Dense {
 		}
 		
 		return a;
+	}
+	
+	public void updateWeights (double learningRate, double error, double lastNeuronOutput) {
+		
+		for (int i=0; i<neurons.length; i++) {
+			
+			Neuron currNeuron = neurons[i];
+			double[] weights = neurons[i].getWeights();
+			
+			for (int j=0; i<weights.length; j++) {
+				// For each of the current neurons weights, adjust it according to the error and the output
+				double oldWeight = weights[j];
+				
+				double currNeuronOutput = currNeuron.getA();
+				
+				oldWeight += learningRate * error * currNeuronOutput * lastNeuronOutput * (1 - lastNeuronOutput);
+			}
+			
+		}
+		
 	}
 	
 	private void initRanBias() {

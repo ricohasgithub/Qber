@@ -15,6 +15,10 @@ public class CostFunction {
 		double[] predictions = p.getValue();
 		double[] truth = t.getValue();
 		
+		if (p.size() == 1 && t.size() == 1) {
+			return truth[0] - predictions[0];
+		}
+		
 		int m = t.size();
 		double error = 0;
 		

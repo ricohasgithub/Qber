@@ -99,8 +99,20 @@ public class Neuron {
 		
 	}
 	
-	public void adjustWeights (Vector changes) {
-		/* TODO */
+	public void adjustWeights (double[] changes) {
+		
+		if (changes.length != weights.length) {
+			throw new IllegalArgumentException("The size of the changes array must be equal to the weight array");
+		}
+		
+		for (int i=0; i<weights.length; i++) {
+			
+		}
+		
+	}
+	
+	public double[] getWeights () {
+		return weights;
 	}
 	
 	private void initRanWeights () {

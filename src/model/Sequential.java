@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import layer.Dense;
 import layer.Layer;
-
+import layer.Neuron;
 import functions.CostFunction;
 
 import qsor.Vector;
@@ -49,17 +49,36 @@ public class Sequential {
 		costFunction = costF;
 	}
 
-	public void train (Vector input, Vector truth, String costFunctions) {
+	public void train (Vector input, Vector truth, String costFunction, double learningRate) {
 
 		if (input.isEmpty() || truth.isEmpty()) {
 			throw new IllegalArgumentException("Input vector cannot be empty");
 		}
 
+		this.learningRate = learningRate;
+		this.costFunction = costFunction;
+		
 		forwardProp(input);
 		
 		updateCurrError(costFunction);
 
 		backProp(100);
+		
+	}
+	
+	public void train (Vector input, Vector truth, String costFunctions, int epochs, double learningRate) {
+
+		if (input.isEmpty() || truth.isEmpty()) {
+			throw new IllegalArgumentException("Input vector cannot be empty");
+		}
+
+		this.learningRate = learningRate;
+		
+		forwardProp(input);
+		
+		updateCurrError(costFunction);
+
+		backProp(epochs);
 		
 	}
 
@@ -90,7 +109,32 @@ public class Sequential {
 			throw new IllegalArgumentException("Must call forward propagation first");
 		}
 		
-		for (int i=0; i<epochs; i++) {
+		/* 
+		 * During each epoch, iterate backwards through the network and update values
+		 * then calculate the new error term and repeat
+		 */
+		
+		for (int e=0; e<epochs; e++) {
+			
+			for (int i=propLayers.length-1; i>=1; i--) {
+				
+				Dense currL = propLayers[i];
+				Dense lastL = propLayers[i-1];
+				
+				// Output of the current layer
+				double[] currLOutput = currL.getAArray();
+				
+				// For each of the current layer's output, adjust its corresponding weights
+				for (int j=0; j<currLOutput.length; j++) {
+					// Update every output / neuron of the previous layer with respect to the current neuron's value
+					lastL.updateWeights(learningRate, error, currLOutput[j]);
+				}
+				
+			}
+			
+			updateCurrError(costFunction);
+			
+			System.out.println("Epoch: " + e + "\t Error: " + error);
 			
 		}
 		
