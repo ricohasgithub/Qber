@@ -30,7 +30,7 @@ public class CostFunction {
 	}
 	
 	public static double diff (double p, double t) {
-		return t - p;
+		return Math.pow(t - p, 2);
 	}
 	
 }

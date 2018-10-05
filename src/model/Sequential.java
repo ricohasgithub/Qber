@@ -120,13 +120,10 @@ public class Sequential {
 			
 			for (int i=propLayers.length-1; i>=1; i--) {
 				
-				Dense currL = propLayers[i];
+				// Dense currL = propLayers[i];
 				Dense lastL = propLayers[i-1];
 				
-				// Output of the current layer
-				double[] currLOutput = currL.getAArray();
-				
-				currL.updateWeights(lastL.getAArray(), learningRate, error);
+				propLayers[i].updateWeights(lastL.getAArray(), learningRate, error);
 				
 			}
 			
