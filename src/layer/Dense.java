@@ -84,7 +84,7 @@ public class Dense {
 					double oldW = currWeights[j];
 
 					// System.out.println("oldW\t" + oldW);
-					oldW = oldW - (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
+					oldW = oldW + (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
 					// System.out.println("newW\t" + oldW);
 
 					// currWeights[j] += learningRate * error * currNeuronOutput * lastLA[j] * (1 - lastLA[j]);

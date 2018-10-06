@@ -14,12 +14,11 @@ public class ActivationFunction {
 		return Math.max(0, z);
 	}
 	
-	public static double softmax (Vector v, double z) {
+	public static double softmax (double[] vals, double z) {
 		// Softmax Activation Function (used for output)
-		double[] vals = v.getValue();
 		
 		double sum = 0;
-		for (int i=0; i<v.size(); i++) {
+		for (int i=0; i<vals.length; i++) {
 			sum += Math.pow(Math.E, vals[i]);
 		}
 		

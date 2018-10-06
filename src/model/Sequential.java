@@ -91,7 +91,7 @@ public class Sequential {
 
 	private void forwardProp (Vector input) {
 		// Initial Layer
-		System.out.println("Start");
+		// System.out.println("Start");
 		double[] prevA = propLayers[0].feedAndGetA(input);
 
 		for (int i=1; i<propLayers.length; i++) {
@@ -120,7 +120,6 @@ public class Sequential {
 		for (int e=0; e<epochs; e++) {
 			
 			printWeights();
-			System.out.println("Input: " + input);
 			
 			for (int i=propLayers.length-1; i>=1; i--) {
 				

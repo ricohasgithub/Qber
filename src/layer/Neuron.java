@@ -4,8 +4,6 @@ import functions.*;
 import qsor.Vector;
 
 public class Neuron {
-
-	private Vector input;
 	
 	private double[] inputs;
 	private double[] weights;
@@ -20,11 +18,10 @@ public class Neuron {
 		if (activationFunction.isEmpty()) {
 			throw new IllegalArgumentException("Activation Function must not be empty");
 		}
-		
-		input = v;
+
 		inputs = v.getValue();
 		
-		weights = new double[input.size()];
+		weights = new double[inputs.length];
 		
 		initRanWeights();
 		
@@ -44,7 +41,6 @@ public class Neuron {
 		weights = new double[v.size()];
 		initRanWeights();
 		
-		input = v;
 		System.out.println("\tV: " + v);
 		inputs = v.getValue();
 	}
@@ -74,7 +70,7 @@ public class Neuron {
 				a = ActivationFunction.tanh(z);
 				break;
 			case "softmax":
-				a = ActivationFunction.softmax(input, z);
+				a = ActivationFunction.softmax(inputs, z);
 				break;
 			case "test":
 				a = z;
