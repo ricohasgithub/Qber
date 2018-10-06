@@ -41,15 +41,11 @@ public class Neuron {
 			throw new IllegalArgumentException("Input vector cannot be null");
 		}
 		
-//		if (inputs.length == 0) {
-//			weights = new double[v.size()];
-//			initRanWeights();
-//		}
-		
 		weights = new double[v.size()];
 		initRanWeights();
 		
 		input = v;
+		System.out.println("\tV: " + v);
 		inputs = v.getValue();
 	}
 	
@@ -80,6 +76,9 @@ public class Neuron {
 			case "softmax":
 				a = ActivationFunction.softmax(input, z);
 				break;
+			case "test":
+				a = z;
+				break;
 		}
 			
 	}
@@ -109,13 +108,20 @@ public class Neuron {
 		}
 		
 		for (int i=0; i<weights.length; i++) {
-			
-		}
+			weights[i] *= changes[0];
+ 		}
 		
 	}
 	
 	public double[] getWeights () {
 		return weights;
+	}
+	
+	public String toString () {
+		
+		Vector currNeuron = new Vector(weights);
+		
+		return "Weights: " + currNeuron;
 	}
 	
 	private void initRanWeights () {

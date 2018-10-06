@@ -6,7 +6,6 @@ public class CostFunction {
 	
 	public static double MSE (double[] p, double[] t) {
 		// Mean Squared Error cost function
-		
 		if (p.length != t.length) {
 			throw new IllegalArgumentException("The predictions and truth vectors must be the same size " 
 												+ p.length + " != " + t.length);
@@ -16,7 +15,7 @@ public class CostFunction {
 		double[] truth = t;
 		
 		if (p.length == 1 && t.length == 1) {
-			return truth[0] - predictions[0];
+			return (truth[0] - predictions[0]);
 		}
 		
 		int m = t.length;

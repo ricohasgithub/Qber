@@ -59,10 +59,11 @@ public class Sequential {
 		this.costFunction = costFunction;
 		this.truth = truth.getValue();
 		
+		initPropLayers();
+		
 		forwardProp(input);
 		
 		updateCurrError(costFunction);
-		System.out.println(error);
 
 		backProp(input, 10);
 		
@@ -78,6 +79,8 @@ public class Sequential {
 		this.costFunction = costFunction;
 		this.truth = truth.getValue();
 		
+		initPropLayers();
+		
 		forwardProp(input);
 		
 		updateCurrError(costFunction);
@@ -87,10 +90,8 @@ public class Sequential {
 	}
 
 	private void forwardProp (Vector input) {
-		
-		initPropLayers();
-
 		// Initial Layer
+		System.out.println("Start");
 		double[] prevA = propLayers[0].feedAndGetA(input);
 
 		for (int i=1; i<propLayers.length; i++) {
@@ -101,7 +102,7 @@ public class Sequential {
 		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());
 		predictions = output.getValue();
 
-		System.out.println(output);
+		System.out.println("Output: " + output);
 	}
 	
 	private void backProp (Vector input, int epochs) {
@@ -118,9 +119,11 @@ public class Sequential {
 		
 		for (int e=0; e<epochs; e++) {
 			
+			printWeights();
+			System.out.println("Input: " + input);
+			
 			for (int i=propLayers.length-1; i>=1; i--) {
 				
-				// Dense currL = propLayers[i];
 				Dense lastL = propLayers[i-1];
 				
 				propLayers[i].updateWeights(lastL.getAArray(), learningRate, error);
@@ -165,5 +168,12 @@ public class Sequential {
 			propLayers[i] = layers.get(i);
 		}
 
+	}
+	
+	private void printWeights () {
+		// Prints the weights of the layers of neurons
+		for (int i=0; i<propLayers.length; i++) {
+			propLayers[i].printNeurons();
+		}
 	}
 }

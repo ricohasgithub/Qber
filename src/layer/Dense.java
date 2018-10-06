@@ -50,7 +50,7 @@ public class Dense {
 	}
 
 	public double[] feedAndGetA (Vector v) {
-
+		
 		double[] a = new double[neurons.length];
 
 		for (int i=0; i<neurons.length; i++) {
@@ -69,6 +69,7 @@ public class Dense {
 		for (int i=0; i<neurons.length; i++) {
 
 			Neuron currNeuron = neurons[i];
+			
 			double[] currWeights = neurons[i].getWeights();
 
 			for (int k=0; k<lastLA.length; k++) {
@@ -84,7 +85,6 @@ public class Dense {
 
 					// System.out.println("oldW\t" + oldW);
 					oldW = oldW - (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
-					// System.out.println("change\t" + error * learningRate * error * currNeuronOutput * lastLA[j] * (1 - lastLA[j]));
 					// System.out.println("newW\t" + oldW);
 
 					// currWeights[j] += learningRate * error * currNeuronOutput * lastLA[j] * (1 - lastLA[j]);
@@ -95,6 +95,12 @@ public class Dense {
 
 		}
 
+	}
+	
+	public void printNeurons () {
+		for (int i=0; i<neurons.length; i++) {
+			System.out.println(neurons[i]);
+		}
 	}
 
 	private void initRanBias() {

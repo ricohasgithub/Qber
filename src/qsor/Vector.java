@@ -27,6 +27,16 @@ public class Vector extends Tensor {
 		return temp;
 	}
 	
+	public void setValue (double[] extValues) {
+		
+		values = new double[extValues.length];
+		
+		for (int i=0; i<extValues.length; i++) {
+			values[i] = extValues[i];
+		}
+		
+	}
+	
 	public int size () {
 		return values.length;
 	}
