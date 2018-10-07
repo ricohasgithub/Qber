@@ -65,7 +65,7 @@ public class Sequential {
 		
 		updateCurrError(costFunction);
 
-		backProp(input, 10);
+		backProp(input, 10, 0.3);
 		
 	}
 	
@@ -74,6 +74,9 @@ public class Sequential {
 		if (input.isEmpty() || truth.isEmpty()) {
 			throw new IllegalArgumentException("Input vector cannot be empty");
 		}
+		
+		System.out.println("Input Vector: " + input);
+		System.out.println("Truth Vector: " + truth);
 
 		this.learningRate = learningRate;
 		this.costFunction = costFunction;
@@ -85,7 +88,7 @@ public class Sequential {
 		
 		updateCurrError(costFunction);
 
-		backProp(input, epochs);
+		backProp(input, epochs, 0.3);
 		
 	}
 
@@ -105,7 +108,7 @@ public class Sequential {
 		System.out.println("Output: " + output);
 	}
 	
-	private void backProp (Vector input, int epochs) {
+	private void backProp (Vector input, int epochs, double minDiff) {
 		
 		if (propLayers.length == 0) {
 			// Forward Propagation hasn't been called yet
@@ -134,6 +137,10 @@ public class Sequential {
 			updateCurrError(costFunction);
 			
 			System.out.println("Epoch: " + e + "\t Error: " + error);
+			
+			if (Math.abs(error) <= minDiff) {
+				break;
+			}
 			
 		}
 		

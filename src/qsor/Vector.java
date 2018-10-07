@@ -2,7 +2,7 @@ package qsor;
 
 public class Vector extends Tensor {
 
-	private static double[] values;
+	private double[] values;
 	
 	public Vector (int size) {
 		values = new double[size];
@@ -75,7 +75,7 @@ public class Vector extends Tensor {
 		
 	}
 
-	private static double getMaxFromVal () {
+	private double getMaxFromVal () {
 		
 		double max = Integer.MIN_VALUE;
 		
@@ -88,7 +88,7 @@ public class Vector extends Tensor {
 		return max;
 	}
 	
-	private static double getMinFromVal () {
+	private double getMinFromVal () {
 		
 		double min = Integer.MAX_VALUE;
 		

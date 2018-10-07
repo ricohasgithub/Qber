@@ -17,14 +17,14 @@ public class SampleDriverClass3 {
 		double[] inputArray = {0.5};
 		Vector inputV = new Vector(inputArray);
 		
-		double[] truthArray = {0.5};
+		double[] truthArray = {0.7};
 		Vector truthV = new Vector(truthArray);
 		
 		model.add(input);
 //		model.add(hidden);
 		model.add(output);
 		
-		model.train(inputV, truthV, "MSE", 5, 5);
+		model.train(inputV, truthV, "MSE", 10, 0.1);
 	}
 	
 }
