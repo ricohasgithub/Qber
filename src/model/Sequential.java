@@ -75,8 +75,7 @@ public class Sequential {
 			throw new IllegalArgumentException("Input vector cannot be empty");
 		}
 		
-		System.out.println("Input Vector: " + input);
-		System.out.println("Truth Vector: " + truth);
+		System.out.println("Input Vector: " + input + "\nTruth Vector: " + truth + "\n");
 
 		this.learningRate = learningRate;
 		this.costFunction = costFunction;
@@ -94,7 +93,6 @@ public class Sequential {
 
 	private void forwardProp (Vector input) {
 		// Initial Layer
-		// System.out.println("Start");
 		double[] prevA = propLayers[0].feedAndGetA(input);
 
 		for (int i=1; i<propLayers.length; i++) {
@@ -104,7 +102,7 @@ public class Sequential {
 
 		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());
 		predictions = output.getValue();
-
+		
 		System.out.println("Output: " + output);
 	}
 	

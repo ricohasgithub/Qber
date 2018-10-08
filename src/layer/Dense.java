@@ -99,7 +99,7 @@ public class Dense {
 	
 	public void printNeurons () {
 		for (int i=0; i<neurons.length; i++) {
-			System.out.println(neurons[i]);
+			System.out.println("\t" + neurons[i]);
 		}
 	}
 

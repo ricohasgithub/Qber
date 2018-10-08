@@ -41,7 +41,7 @@ public class Neuron {
 		weights = new double[v.size()];
 		initRanWeights();
 		
-		System.out.println("\tV: " + v);
+//		System.out.println("\tV: " + v);
 		inputs = v.getValue();
 	}
 	

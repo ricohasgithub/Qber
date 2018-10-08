@@ -17,7 +17,7 @@ public class SampleDriverClass3 {
 		double[] inputArray = {0.5};
 		Vector inputV = new Vector(inputArray);
 		
-		double[] truthArray = {0.7};
+		double[] truthArray = {0.25};
 		Vector truthV = new Vector(truthArray);
 		
 		model.add(input);
