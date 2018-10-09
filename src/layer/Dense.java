@@ -19,7 +19,7 @@ public class Dense {
 		for (int i=0; i<neurons.length; i++) {
 			neurons[i] = new Neuron(new Vector(inputShape), activationFunction);
 		}
-
+		
 		initRanBias();
 	}
 
@@ -49,15 +49,24 @@ public class Dense {
 		return a;
 	}
 
-	public double[] feedAndGetA (Vector v) {
+	public double[] feedAndGetA (Vector v, boolean first) {
 		
 		double[] a = new double[neurons.length];
 
-		for (int i=0; i<neurons.length; i++) {
-			Neuron curr = neurons[i];
-			curr.addVector(v);
-			curr.propagate(bias);
-			a[i] = curr.getA();
+		if (first) {
+			for (int i=0; i<neurons.length; i++) {
+				Neuron curr = neurons[i];
+				curr.addVector(v);
+				curr.propagate(bias);
+				a[i] = curr.getA();
+			}
+		} else {
+			for (int i=0; i<neurons.length; i++) {
+				Neuron curr = neurons[i];
+				curr.addVectorNoWeights(v);
+				curr.propagate(bias);
+				a[i] = curr.getA();
+			}
 		}
 
 		return a;
@@ -70,7 +79,7 @@ public class Dense {
 
 			Neuron currNeuron = neurons[i];
 			
-			double[] currWeights = neurons[i].getWeights();
+			double[] currWeights = currNeuron.getWeights();
 
 			for (int k=0; k<lastLA.length; k++) {
 				// For each output / neuron in the last layer
@@ -91,6 +100,24 @@ public class Dense {
 					currWeights[j] = oldW ;
 				}
 				
+			}
+
+		}
+
+	}
+	
+	public void updateWeightsRan (double[] lastLA, double learningRate, double error) {
+
+		// lastLA is the a values for the last layer (input to the current layer)
+		for (int i=0; i<neurons.length; i++) {
+			System.out.println("\tCurr Neuron: " + i);
+			Neuron currNeuron = neurons[i];
+			
+			if (error < 0) {
+				// Negative error, decrease weights
+				currNeuron.adjustWeights(new double[]{0.01, 1});
+			} else {
+				currNeuron.adjustWeights(new double[]{-0.01, 1});
 			}
 
 		}

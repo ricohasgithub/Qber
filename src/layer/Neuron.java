@@ -22,7 +22,7 @@ public class Neuron {
 		inputs = v.getValue();
 		
 		weights = new double[inputs.length];
-		
+
 		initRanWeights();
 		
 		this.activationFunction = activationFunction;
@@ -41,8 +41,17 @@ public class Neuron {
 		weights = new double[v.size()];
 		initRanWeights();
 		
-//		System.out.println("\tV: " + v);
 		inputs = v.getValue();
+	}
+	
+	public void addVectorNoWeights (Vector v) {
+		
+		if (v == null) {
+			throw new IllegalArgumentException("Input vector cannot be null");
+		}
+		
+		inputs = v.getValue();
+		
 	}
 	
 	public void propagate (double bias) {
@@ -99,12 +108,14 @@ public class Neuron {
 	
 	public void adjustWeights (double[] changes) {
 		
-		if (changes.length != weights.length) {
-			throw new IllegalArgumentException("The size of the changes array must be equal to the weight array");
-		}
+//		if (changes.length != weights.length) {
+//			throw new IllegalArgumentException("The size of the changes array must be equal to the weight array");
+//		}
 		
 		for (int i=0; i<weights.length; i++) {
-			weights[i] *= changes[0];
+			System.out.print("\tWeights Before: " + weights[i] + "\t");
+			weights[i] += changes[0];
+			System.out.print("Weights After: " + weights[i] + "\n");
  		}
 		
 	}
@@ -121,7 +132,6 @@ public class Neuron {
 	}
 	
 	private void initRanWeights () {
-		
 		for (int i=0; i<weights.length; i++) {
 			weights[i] = Math.random();
 		}

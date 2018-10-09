@@ -61,7 +61,7 @@ public class Sequential {
 		
 		initPropLayers();
 		
-		forwardProp(input);
+		forwardProp(input, true);
 		
 		updateCurrError(costFunction);
 
@@ -83,21 +83,24 @@ public class Sequential {
 		
 		initPropLayers();
 		
-		forwardProp(input);
+		forwardProp(input, true);
 		
 		updateCurrError(costFunction);
 
-		backProp(input, epochs, 0.3);
+		backProp(input, epochs, 0.1);
 		
 	}
 
-	private void forwardProp (Vector input) {
+	private void forwardProp (Vector input, boolean first) {
 		// Initial Layer
-		double[] prevA = propLayers[0].feedAndGetA(input);
+		
+		double[] prevA = propLayers[0].feedAndGetA(input, first);
+		
+		System.out.println(prevA[0]);
 
 		for (int i=1; i<propLayers.length; i++) {
 			// Repeatedly feed forward a new Vector created from the a values of the previous layer
-			prevA = propLayers[i].feedAndGetA(new Vector(prevA));
+			prevA = propLayers[i].feedAndGetA(new Vector(prevA), first);
 		}
 
 		Vector output = new Vector(propLayers[propLayers.length-1].getAArray());
@@ -124,13 +127,19 @@ public class Sequential {
 			
 			for (int i=propLayers.length-1; i>=1; i--) {
 				
+				System.out.println("Curr Layer: " + i);
+				
 				Dense lastL = propLayers[i-1];
 				
 				propLayers[i].updateWeights(lastL.getAArray(), learningRate, error);
 				
 			}
 			
-			forwardProp(input);
+			System.out.println("Curr Layer: " + 0);
+			
+			propLayers[0].updateWeights(input.getValue(), learningRate, error);
+			
+			forwardProp(input, false);
 			
 			updateCurrError(costFunction);
 			
