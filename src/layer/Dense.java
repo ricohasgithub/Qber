@@ -54,6 +54,7 @@ public class Dense {
 		double[] a = new double[neurons.length];
 
 		if (first) {
+			// First iteration, initialize the random weights
 			for (int i=0; i<neurons.length; i++) {
 				Neuron curr = neurons[i];
 				curr.addVector(v);
@@ -61,6 +62,7 @@ public class Dense {
 				a[i] = curr.getA();
 			}
 		} else {
+			// Add the input vector without initializing the random weights
 			for (int i=0; i<neurons.length; i++) {
 				Neuron curr = neurons[i];
 				curr.addVectorNoWeights(v);
@@ -72,7 +74,7 @@ public class Dense {
 		return a;
 	}
 
-	public void updateWeights (double[] lastLA, double learningRate, double error) {
+	public void updateWeightsRan (double[] lastLA, double learningRate, double error) {
 
 		// lastLA is the a values for the last layer (input to the current layer)
 		for (int i=0; i<neurons.length; i++) {
@@ -92,12 +94,12 @@ public class Dense {
 
 					double oldW = currWeights[j];
 
-					// System.out.println("oldW\t" + oldW);
-					oldW = oldW + (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
-					// System.out.println("newW\t" + oldW);
+					oldW += (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
 
 					// currWeights[j] += learningRate * error * currNeuronOutput * lastLA[j] * (1 - lastLA[j]);
 					currWeights[j] = oldW ;
+					
+					System.out.println("\t" + currWeights[j]);
 				}
 				
 			}
@@ -106,7 +108,7 @@ public class Dense {
 
 	}
 	
-	public void updateWeightsRan (double[] lastLA, double learningRate, double error) {
+	public void updateWeights (double[] lastLA, double learningRate, double error) {
 
 		// lastLA is the a values for the last layer (input to the current layer)
 		for (int i=0; i<neurons.length; i++) {
@@ -115,9 +117,9 @@ public class Dense {
 			
 			if (error < 0) {
 				// Negative error, decrease weights
-				currNeuron.adjustWeights(new double[]{0.01, 1});
+				currNeuron.adjustWeights(new double[]{-0.001, 1});
 			} else {
-				currNeuron.adjustWeights(new double[]{-0.01, 1});
+				currNeuron.adjustWeights(new double[]{0.001, 1});
 			}
 
 		}
