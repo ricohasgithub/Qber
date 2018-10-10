@@ -1,5 +1,10 @@
 package functions;
 
+/* Created By Rico Zhu
+ * 		The following class is used in the Qber library to perform activation function calculations (e.g., sigmoid, tanh .etc)
+ * 		In order to call the methods, use ActivationFunction.method(Parameter p);
+ */
+
 import qsor.Vector;
 
 public class ActivationFunction {

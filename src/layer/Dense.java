@@ -74,7 +74,7 @@ public class Dense {
 		return a;
 	}
 
-	public void updateWeightsRan (double[] lastLA, double learningRate, double error) {
+	public void updateWeights (double[] lastLA, double learningRate, double error) {
 
 		// lastLA is the a values for the last layer (input to the current layer)
 		for (int i=0; i<neurons.length; i++) {
@@ -97,9 +97,7 @@ public class Dense {
 					oldW += (error * learningRate * error * lastOutput * currNeuronOutput * (1 - currNeuronOutput));
 
 					// currWeights[j] += learningRate * error * currNeuronOutput * lastLA[j] * (1 - lastLA[j]);
-					currWeights[j] = oldW ;
-					
-					System.out.println("\t" + currWeights[j]);
+					currWeights[j] = oldW;
 				}
 				
 			}
@@ -108,7 +106,7 @@ public class Dense {
 
 	}
 	
-	public void updateWeights (double[] lastLA, double learningRate, double error) {
+	public void updateWeightsRan (double[] lastLA, double learningRate, double error) {
 
 		// lastLA is the a values for the last layer (input to the current layer)
 		for (int i=0; i<neurons.length; i++) {

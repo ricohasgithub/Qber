@@ -1,5 +1,10 @@
 package functions;
 
+/* Created By Rico Zhu
+ * 		The following class is used in the Qber library to perform cost/loss function calculations (e.g., MSE)
+ * 		In order to call the methods, use CostFunction.method(Parameter p);
+ */
+
 import qsor.Vector;
 
 public class CostFunction {

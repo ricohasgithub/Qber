@@ -10,21 +10,21 @@ public class SampleDriverClass3 {
 		// TODO Auto-generated method stub
 		Sequential model = new Sequential();
 		
-		Dense input = new Dense(1, "sigmoid");
-//		Dense hidden = new Dense(1, "test");
-		Dense output = new Dense(1, "sigmoid");
+		Dense input = new Dense(2, "sigmoid");
+		Dense hidden = new Dense(2, "sigmoid");
+		Dense output = new Dense(2, "sigmoid");
 		
-		double[] inputArray = {0.5};
+		double[] inputArray = {0.5, 0.3};
 		Vector inputV = new Vector(inputArray);
 		
-		double[] truthArray = {0.1};
+		double[] truthArray = {0.25, 0.1};
 		Vector truthV = new Vector(truthArray);
 		
 		model.add(input);
-//		model.add(hidden);
+		model.add(hidden);
 		model.add(output);
 		
-		model.train(inputV, truthV, "MSE", 10000, 0.1);
+		model.train(inputV, truthV, "MSE", 10, 0.1);
 	}
 	
 }
