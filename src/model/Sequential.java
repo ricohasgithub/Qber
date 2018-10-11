@@ -1,5 +1,11 @@
 package model;
 
+/* 	Created By Rico Zhu
+ * 	The Sequential object is used to represent a single neuron network (similar to Keras)
+ * 		There is a train method that takes in 2 vectors, input and truth and computes the changes over a given number of epochs
+ * 		There is an array of Dense objects to keep track of the entire network and it is used in propagation
+ */
+
 import java.util.ArrayList;
 
 import layer.Dense;

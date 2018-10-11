@@ -1,5 +1,12 @@
 package layer;
 
+/* 	Created By Rico Zhu
+ * 	The Neuron object is used to represent a single neurons (similar to Keras)
+ * 		There are 2 constructors, one with an input Vector v (used in input layers) and one without (used in hidden and output)
+ * 		There are also methods that manipulate weights and add Vectors
+ * 		The propagate method is used to transform the z vector into a values to be passed onto the next layer
+ */
+
 import functions.*;
 import qsor.Vector;
 

@@ -1,5 +1,11 @@
 package layer;
 
+/* 	Created By Rico Zhu
+ * 	The Dense object is used to represent a single layer of neurons (similar to Keras)
+ * 		There are 2 constructors, one with an inputShape parameter (for input layers) and one without
+ * 		There are also methods that manipulate weights (used in forward and back propagation)
+ */
+
 import qsor.Vector;
 
 public class Dense {
