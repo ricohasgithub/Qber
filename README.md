@@ -23,3 +23,11 @@ In Qber, this would be accomplished thourgh this similar block of code:
 ## Objects
 
 Qber mostly involves the manipulation of Vectors and Neurons. Qber Vectors are essentially a more functional double array, and Qber Neurons are modelled after neurons in machine learning. A Neuron object would take in an input Vector and will calculate a single a term. The layer object (Dense) involves an array of Neurons, and a model (Sequential) is an array of layers.
+
+#### Qbers
+
+Qbers are at the core of Qber. Qbers are essentially Java representations of any mathematical representation of arrays (i.e., Scalars, Vectors, Matrices and Tensors). All Qbers are subclasses to the Tensor superclass.
+
+#### Neurons
+
+Neurons are Java representations of machine learning (and real life!) neurons. They involve an input Vetor (Dendrites) and some sort of function to tranform the input Vector into an output
