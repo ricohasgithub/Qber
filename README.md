@@ -1,7 +1,6 @@
 # Qber
 
 Qber is a Java Machine Library that is modelled after the Keras Framework
-(FYI: There may be a lot of mistakes as this was in fact developed by a high school student)
 
 ## Getting Started
 
